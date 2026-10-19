@@ -1,13 +1,13 @@
-# Error-Actionability Translation for MCP Tool Failures
+# MCP Answer-Quality Canary
 
-Classifies MCP tool failures (bare isError + prose) into host-enforced recovery verdicts - category, retryable, retry-after, repair target, replay-safety - from per-server error-dialect profiles; strips raw prose from model context and refuses unsafe resends at the gateway. Solo $9/mo, Fleet $19/mo, verdict API $0.002 per check via x402; first month free once per operator.
+Continuously verifies that MCP servers answer correctly: real MCP protocol canary calls (list + seeded-record search) cross-checked against independent ground truth, returning agent-readable PASS / FAIL / UNKNOWN verdicts with defect classes (truncation, null result, wrong value, missing seeded record, pagination loop, timeout). $0.50 per server/month flat; first month free on the first 5 servers, once per operator.
 
 ## Connect (remote MCP, streamable HTTP)
 
-- MCP endpoint: `https://textforagents.com/products/error-actionability-translation/mcp`
+- MCP endpoint: `https://textforagents.com/products/mcp-answer-quality-canary/mcp`
 - Transport: streamable HTTP (also accepts POST at the product base URL)
 - Auth: `Authorization: Bearer <token>` — get a token self-serve:
-  `POST https://textforagents.com/products/error-actionability-translation/register` then
+  `POST https://textforagents.com/products/mcp-answer-quality-canary/register` then
   `POST /trial` (one-time free trial) or `POST /subscribe` (x402, Base USDC).
 
 Example client config:
@@ -15,8 +15,8 @@ Example client config:
 ```json
 {
   "mcpServers": {
-    "error-actionability-translation": {
-      "url": "https://textforagents.com/products/error-actionability-translation/mcp",
+    "mcp-answer-quality-canary": {
+      "url": "https://textforagents.com/products/mcp-answer-quality-canary/mcp",
       "headers": { "Authorization": "Bearer <your-token>" }
     }
   }
@@ -25,9 +25,9 @@ Example client config:
 
 ## Docs
 
-- Full machine-readable docs: https://textforagents.com/products/error-actionability-translation/llms.txt
-- OpenAPI: https://textforagents.com/products/error-actionability-translation/openapi.json
-- A2A agent card: https://textforagents.com/agent-cards/error-actionability-translation.json
+- Full machine-readable docs: https://textforagents.com/products/mcp-answer-quality-canary/llms.txt
+- OpenAPI: https://textforagents.com/products/mcp-answer-quality-canary/openapi.json
+- A2A agent card: https://textforagents.com/agent-cards/mcp-answer-quality-canary.json
 - Catalog: https://textforagents.com/products/ ("Other Products")
 
 Provider: TextForAgents LLC · Support: support@textforagents.com
